@@ -4,6 +4,7 @@
   "dependencies": {
     "@vitest/browser": "^2.1.5",
     "msw": "^2.6.5",
+    "pg": "^8.13.1",
     "playwright": "^1.49.0",
     "typescript": "^5.6.3",
     "vitest": "^2.1.5"

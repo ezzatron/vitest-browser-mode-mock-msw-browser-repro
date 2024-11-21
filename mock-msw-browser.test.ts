@@ -1,19 +1,21 @@
 import { setupWorker } from "msw/browser";
 import { expect, it, vi } from "vitest";
+import { Client } from "pg";
+
+vi.mock("pg", () => {
+  const Client = vi.fn();
+
+  return { Client };
+});
 
 vi.mock("msw/browser", () => {
   return {
-    setupWorker: vi.fn(() => {
-      return {
-        start: vi.fn(async () => {}),
-        stop: vi.fn(),
-        use: vi.fn(),
-        resetHandlers: vi.fn(),
-        restoreHandlers: vi.fn(),
-        listHandlers: vi.fn(),
-      };
-    }),
+    setupWorker: vi.fn(),
   };
+});
+
+it("can mock pg", async () => {
+  expect(Client).not.toBeCalled();
 });
 
 it("can mock msw/browser", async () => {
